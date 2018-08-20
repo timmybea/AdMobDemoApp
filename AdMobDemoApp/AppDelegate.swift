@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        window?.rootViewController = ViewController()
+        
+        FirebaseApp.configure()
+                
+        //MARK: setup interstitials
+        InterstitialService.shared.delegate = self
+        InterstitialService.shared.createAndLoadInterstitial()
+        InterstitialService.shared.setupTimer()
+        
         return true
     }
 
@@ -44,3 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate : InterstitialServiceDelegate {
+    
+    func interstitialTimerExecuted() {
+        
+        //guard let tabBarController = self.window?.rootViewController as? UITabBarController else { return }
+        //guard let navCon = tabBarController.selectedViewController as? UINavigationController else { return }
+        //guard let vc = navCon.topViewController else { return }
+        
+        guard let vc = window?.rootViewController else { return }
+        InterstitialService.shared.showInterstitial(in: vc)
+    }
+    
+}
