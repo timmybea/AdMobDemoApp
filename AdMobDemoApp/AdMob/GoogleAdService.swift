@@ -32,6 +32,7 @@ class GoogleAdService: NSObject {
         //test device - window/devices/identifier
         
         request.testDevices = [kGADSimulatorID]
+        request.tag(forChildDirectedTreatment: true) //Safe for COPPA
         
         //you need to create an adMob account and register the app
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-7286043563325113/5024416928") //test ad unit id

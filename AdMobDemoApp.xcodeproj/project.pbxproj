@@ -17,6 +17,9 @@
 		B07FF8BA212B32B4001CC9BB /* InterstitialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FF8B9212B32B4001CC9BB /* InterstitialService.swift */; };
 		B07FF8BC212B3316001CC9BB /* GoogleAdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FF8BB212B3316001CC9BB /* GoogleAdService.swift */; };
 		B07FF8C0212B33BC001CC9BB /* InterstitialTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FF8BF212B33BC001CC9BB /* InterstitialTimer.swift */; };
+		B0BC95CF212B94790014E491 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BC95CE212B94790014E491 /* StoreKit.framework */; };
+		B0F1AE11212C7B7D00A8D764 /* Extension_SK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1AE10212C7B7D00A8D764 /* Extension_SK.swift */; };
+		B0F1AE14212C85B700A8D764 /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F1AE13212C85B700A8D764 /* IAPService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		B07FF8B9212B32B4001CC9BB /* InterstitialService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialService.swift; sourceTree = "<group>"; };
 		B07FF8BB212B3316001CC9BB /* GoogleAdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdService.swift; sourceTree = "<group>"; };
 		B07FF8BF212B33BC001CC9BB /* InterstitialTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialTimer.swift; sourceTree = "<group>"; };
+		B0BC95CE212B94790014E491 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B0F1AE10212C7B7D00A8D764 /* Extension_SK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_SK.swift; sourceTree = "<group>"; };
+		B0F1AE13212C85B700A8D764 /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		C782F42806798707F6ACC5B2 /* Pods-AdMobDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdMobDemoApp.release.xcconfig"; path = "Target Support Files/Pods-AdMobDemoApp/Pods-AdMobDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FBB481A433802969DCBE3B3 /* Pods_AdMobDemoApp.framework in Frameworks */,
+				B0BC95CF212B94790014E491 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +58,7 @@
 		6375BD07D4D6653F4B91AEA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0BC95CE212B94790014E491 /* StoreKit.framework */,
 				ADE74958FC5B40763312E244 /* Pods_AdMobDemoApp.framework */,
 			);
 			name = Frameworks;
@@ -79,7 +87,8 @@
 			children = (
 				B0493076212B28B8008D0F36 /* AppDelegate.swift */,
 				B0493078212B28B8008D0F36 /* ViewController.swift */,
-				B07FF8C1212B33FB001CC9BB /* AdClasses */,
+				B0F1AE12212C7C6000A8D764 /* IAP */,
+				B07FF8C1212B33FB001CC9BB /* AdMob */,
 				B049307A212B28B8008D0F36 /* Main.storyboard */,
 				B049307D212B28BB008D0F36 /* Assets.xcassets */,
 				B049307F212B28BB008D0F36 /* LaunchScreen.storyboard */,
@@ -88,7 +97,7 @@
 			path = AdMobDemoApp;
 			sourceTree = "<group>";
 		};
-		B07FF8C1212B33FB001CC9BB /* AdClasses */ = {
+		B07FF8C1212B33FB001CC9BB /* AdMob */ = {
 			isa = PBXGroup;
 			children = (
 				B01D229E212B36F700857923 /* GoogleService-Info.plist */,
@@ -96,7 +105,16 @@
 				B07FF8BB212B3316001CC9BB /* GoogleAdService.swift */,
 				B07FF8B9212B32B4001CC9BB /* InterstitialService.swift */,
 			);
-			path = AdClasses;
+			path = AdMob;
+			sourceTree = "<group>";
+		};
+		B0F1AE12212C7C6000A8D764 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				B0F1AE10212C7B7D00A8D764 /* Extension_SK.swift */,
+				B0F1AE13212C85B700A8D764 /* IAPService.swift */,
+			);
+			path = IAP;
 			sourceTree = "<group>";
 		};
 		E69450EA5ABC91D145CA8508 /* Pods */ = {
@@ -142,6 +160,11 @@
 				TargetAttributes = {
 					B0493072212B28B8008D0F36 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -223,9 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0F1AE11212C7B7D00A8D764 /* Extension_SK.swift in Sources */,
 				B0493079212B28B8008D0F36 /* ViewController.swift in Sources */,
 				B0493077212B28B8008D0F36 /* AppDelegate.swift in Sources */,
 				B07FF8BA212B32B4001CC9BB /* InterstitialService.swift in Sources */,
+				B0F1AE14212C85B700A8D764 /* IAPService.swift in Sources */,
 				B07FF8BC212B3316001CC9BB /* GoogleAdService.swift in Sources */,
 				B07FF8C0212B33BC001CC9BB /* InterstitialTimer.swift in Sources */,
 			);

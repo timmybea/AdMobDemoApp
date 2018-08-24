@@ -1,0 +1,1 @@
+This demo implements AdMob interstitials as well as in app purchases. 
